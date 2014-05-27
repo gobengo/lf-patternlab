@@ -3,6 +3,14 @@
 }
 
 /*
+Make sure the user can see the top of each pattern even with the
+patternlab header bar
+*/
+.lf body.sg-single-pattern {
+  margin-top: 1em;
+}
+
+/*
 
 */
 /*------------------------------------*\
