@@ -1,1 +1,28 @@
-<img src="../../images/ajax-loader.gif" alt="Loading" />
+150
+<span data-lf-loader data-size="150"></span>
+120
+<span data-lf-loader data-size="120"></span>
+large
+<span data-lf-loader data-size="large"></span>
+small
+<span data-lf-loader data-size="small"></span>
+mini
+<span data-lf-loader data-size="mini"></span>
+
+<script>
+Livefyre.require([
+    'livefyre-bootstrap',
+    'jquery'],
+function (LFB, $) {
+    $('[data-lf-loader]').each(function (i, el) {
+        // data-size attribute will either be a str like 'mini'
+        // or a number
+        var size = el.dataset.size;
+        var intSize = parseInt(size, 10);
+        if ( ! isNaN(intSize)) {
+            size = intSize;
+        }
+        LFB.loader.decorate(el, size);
+    });
+})
+</script>

@@ -1,5 +1,5 @@
 /* 
- * patternlab-node - v0.1.1 - 2014-05-05 
+ * patternlab-node - v0.1.1 - 2014-05-26 
  * 
  * Brian Muenzenmeyer, and the web community.
  * Licensed under the MIT license. 
@@ -72,6 +72,9 @@ module.exports = function(grunt) {
 		patternlab.patternPaths = {};
 		patternlab.viewAllPaths = {};
 
+		patternlab.context = Object.create(patternlab.data);
+		patternlab.context.listItems = patternlab.listitems;
+
 		grunt.file.recurse('./source/_patterns', function(abspath, rootdir, subdir, filename){
 			//check if the pattern already exists.  
 			var patternName = filename.substring(0, filename.indexOf('.'));
@@ -83,12 +86,22 @@ module.exports = function(grunt) {
 			if(filename.charAt(0) === '_'){
 				return;
 			}
+			//ignore .DS_Store
+			if(filename.indexOf('.DS_Store') === 0){
+				return;
+			}
 
+			if (patternName.indexOf('comment') !== -1) {
+				debugger;
+			}
 			//two reasons could return no pattern, 1) just a bare mustache, or 2) a json found before the mustache
 			//returns -1 if patterns does not exist, otherwise returns the index
 			//add the pattern array if first time, otherwise pull it up
 			if(patternIndex === -1){
 				grunt.log.ok('pattern not found, adding to array');
+				if (subdir === undefined || flatPatternName === undefined) {
+					debugger;
+				}
 				var flatPatternName = subdir.replace(/\//g, '-') + '-' + patternName;
 				flatPatternName = flatPatternName.replace(/\//g, '-');
 				currentPattern = new oPattern(flatPatternName, subdir, filename, {});
@@ -103,12 +116,13 @@ module.exports = function(grunt) {
 					currentPattern.template = grunt.file.read(abspath);
 
 					//render the pattern. pass partials object just in case.
-					currentPattern.patternPartial = mustache.render(currentPattern.template, patternlab.data, patternlab.partials);
+					currentPattern.patternPartial = mustache.render(currentPattern.template, patternlab.context, patternlab.partials);
 
 					//write the compiled template to the public patterns directory
 					flatPatternPath = currentPattern.name + '/' + currentPattern.name + '.html';
 
 					//add footer info before writing
+					currentPattern.patternHTML = currentPattern.patternPartial;
 					var currentPatternFooter = mustache.render(patternlab.footer, currentPattern);
 
 					grunt.file.write('./public/patterns/' + flatPatternPath, patternlab.header + currentPattern.patternPartial + currentPatternFooter);
@@ -142,7 +156,13 @@ module.exports = function(grunt) {
 					currentPattern.template = grunt.file.read(abspath);
 
 					//render the pattern. pass partials object just in case.
-					currentPattern.patternPartial = mustache.render(currentPattern.template, currentPattern.data, patternlab.partials);
+					var benData = Object.create(patternlab.data);
+					benData.listItems = patternlab.listitems;
+					if (currentPattern.name.indexOf('comments') !== -1) {
+						debugger;
+					}
+
+					currentPattern.patternPartial = mustache.render(currentPattern.template, benData, patternlab.partials);
 					grunt.log.writeln('template compiled with data!');
 
 					//write the compiled template to the public patterns directory

@@ -1,3 +1,7 @@
+.sg-single-pattern {
+    background-color: white;
+}
+
 /*
 
 */
@@ -30,18 +34,16 @@
  */
 
 
-
+/*
 @import "scss/generic/variables";
 @import "scss/generic/mixins";
 @import "scss/generic/reset";
-
-
-
-
+*/
 
 /*------------------------------------*\
     $GLOBAL ELEMENTS
 \*------------------------------------*/
+/*
 @import "scss/base/global-classes";
 @import "scss/base/main";
 @import "scss/base/links";
@@ -52,36 +54,39 @@
 @import "scss/base/forms";
 @import "scss/base/tables";
 @import "scss/base/animation";
-
-
+*/
 
 
 
 /*------------------------------------*\
     $LAYOUT
 \*------------------------------------*/
+/*
 @import "scss/objects/layout";
-
+*/
 
 /*------------------------------------*\
     $PAGE STRUCTURE
 \*------------------------------------*/
+/*
 @import "scss/objects/header";
 @import "scss/objects/nav";
 @import "scss/objects/main";
 @import "scss/objects/footer";
-
+*/
 
 
 /*------------------------------------*\
     $TEXT Styles
 \*------------------------------------*/
+/*
 @import "scss/objects/text";
-
+*/
 
 /*------------------------------------*\
     $COMPONENTS
 \*------------------------------------*/
+/*
 @import "scss/objects/icons";
 @import "scss/objects/buttons";
 @import "scss/objects/blocks";
@@ -92,5 +97,5 @@
 @import "scss/objects/sections";
 @import "scss/objects/article";
 @import "scss/objects/comments";
-
+*/
 

@@ -1,0 +1,14 @@
+{
+  "name": "lf-patternlab",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "livefyre-bootstrap": "Livefyre/livefyre-bootstrap#~1.0"
+  }
+}

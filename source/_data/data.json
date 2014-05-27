@@ -1,4 +1,13 @@
 {
+	"colors": [
+		{"name":"lf-gray-darker","hex":"#2F3440"},
+		{"name":"lf-purple","hex":"#7168A5"},
+		{"name":"lf-blue","hex":"#0F98EC"},
+		{"name":"lf-green","hex":"#63C685"},
+		{"name":"lf-yellow","hex":"#FEB33B"},
+		{"name":"lf-orange","hex":"#E65B3F"},
+		{"name":"lf-red","hex":"#F53E52"}
+	],
 	"img": {
 		"landscape-4x3": {
 			"src": "../../images/fpo_4x3.png",
